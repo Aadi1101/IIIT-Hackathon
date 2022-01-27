@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+//import Sidebar from "./Sidebar";
 import { useHistory } from "react-router";
 
 export default function Home() {
@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div>
       <div className="banner">
-        <h1>Welcome to Bikezilla!</h1>
-        <p>We Keep you Riding</p>
+        <h1><b>Welcome!</b></h1>
+        <p><b>Are you hungry?</b></p>
         <button onClick={()=>history.push("/products")}   className="standalone"> Get Started </button>
       </div>
     </div>
