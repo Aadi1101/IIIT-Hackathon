@@ -79,7 +79,7 @@ a:hover{
 }
 
 .banner{
-  background:linear-gradient( rgba(255, 231, 96, 0.5) 100%, rgba(255, 233, 111, 0.5)100%),url("https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80");
+  background:linear-gradient( rgba(82, 64, 64, 0.227) 100%, rgba(109, 77, 77, 0.556)100%),url("https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -88,12 +88,15 @@ a:hover{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #fff;
 }
 
 button.standalone{
   display: inline-block;
   width: auto;
   padding: 1.5rem 2.5rem;
+  background-color: rgba(220, 18, 18, 0.871);
+  color: #fff;
 }
 
 
