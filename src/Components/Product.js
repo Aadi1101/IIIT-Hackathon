@@ -38,15 +38,15 @@ export default function Product() {
               </p>
               <div className="row">
                 <div className="col">
-                  Buy @ ₹{products[id].buyPrice} <br />
+                  charges along with ₹{products[id].buyPrice} <br />
                   <button className="standalone" onClick={onAddToCart(0)}>
-                    Add to Cart
+                    Book a Table
                   </button>
                 </div>
                 <div className="col">
-                  Rent @ ₹{products[id].rentPrice}/month <br />
+                charges along with ₹{products[id].rentPrice}<br />
                   <button className="standalone" onClick={onAddToCart(1)}>
-                    Add to Cart
+                    Takeaway
                   </button>
                 </div>
               </div>
