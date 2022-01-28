@@ -108,6 +108,9 @@ button.standalone{
   margin: 5rem 0;
 }
 
+.map{
+  align-items: center;
+}
 footer{
   background-color: #fff;
   color: #444;
