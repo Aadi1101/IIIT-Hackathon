@@ -13,6 +13,7 @@ export default function Header() {
     <nav>
       <Link to="/products">Meals</Link>
       <Link to="/wishlist">Wishlist</Link>
+      <Link to="/takeaway">Takeaway</Link>
       <Link to="/cart">Orders {(user && data.cart && data.cart.quantity)?`(${data.cart.quantity})`:"(0)"} </Link>
       {(user)?   <Link to="/profile">Profile</Link>:    <Link to="/login">Login</Link>}
       {(user)?<button className="standalone" onClick={logout}> Logout </button>: <Link to="/signup">Signup</Link>}
