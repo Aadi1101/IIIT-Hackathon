@@ -155,8 +155,13 @@ export function DataProvider({ children }) {
       name: products[id].name,
       rentPrice: products[id].rentPrice,
       buyPrice: products[id].buyPrice,
+      quantity: 1,
       img: products[id].img
     }
+    if (!tempWishlist["total"]) tempWishlist["total"] = 0;
+        tempWishlist["total"] = tempWishlist["total"] + Number((tempWishlist[id].quantity)*100 );
+        if (!tempWishlist["quantity"]) tempWishlist["quantity"] = 0;
+        tempWishlist["quantity"] = tempWishlist["quantity"] + 1;
     setWishlist(tempWishlist);
   }
 
