@@ -40,7 +40,7 @@ export default function Product() {
                 <div className="col">
                   charges along with ₹{products[id].buyPrice} <br />
                   <button className="standalone" onClick={onAddToCart(0)}>
-                    Book a Table
+                    Buy Now
                   </button>
                 </div>
                 <div className="col">
