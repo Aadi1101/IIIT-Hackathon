@@ -10,7 +10,7 @@ export default function Home() {
       <div className="banner">
         <h1><b>Welcome!</b></h1>
         <p><b>Are you hungry?</b></p>
-        <button onClick={()=>history.push("/products")}   className="standalone"> Get Started </button>
+        <button onClick={()=>history.push("/products")}   className="standalone"> Search a Meal </button>
       </div>
     </div>
   );
