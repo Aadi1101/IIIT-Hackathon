@@ -57,7 +57,8 @@ export default function Products() {
 
     const history = useHistory();
 
-    return ( <div className = "container">
+    return ( 
+        <div className = "container">
         <Sidebar aesc = { onAscending }
         desc = { onDescending }
         onFilter = { onFilter }
