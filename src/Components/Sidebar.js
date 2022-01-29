@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-export default function Sidebar({ aesc, desc, onFilter }) {
+export default function Sidebar({onFilter }) {
 
     const [filter, setFilter] = useState(["", ""]);
 
@@ -14,40 +14,18 @@ export default function Sidebar({ aesc, desc, onFilter }) {
 
     const onSizeFilter = (size) => () => {
         let tempFilter = [...filter];
-        tempFilter[1] = size;
+    tempFilter[1] = size;
         console.log(tempFilter);
         setFilter(tempFilter);
         onFilter(tempFilter);
     };
-    return ( <
-        div className = "product-wrapper sidebar" >
-        <
-        div className = "row" >
-        <
-        div className = "col" >
-        <
-        h4 > Sort < /h4> <
-        hr / >
-        Price < br / >
-        <
-        button onClick = { aesc }
-        className = "standalone" > { " " }
-        Ascending { " " } <
-        /button>{" "} <
-        br / >
-        <
-        button onClick = { desc }
-        className = "standalone" > { " " }
-        Descending { " " } <
-        /button>{" "} <
-        br / >
-        <
-        /div> <
-        div className = "col" >
-        <
-        h4 > Filter By < /h4> <
-        hr / >
-        Type < br / >
+    return ( 
+    <div className = "product-wrapper sidebar">
+        <div className = "row">
+        <div className = "col">
+        </div> <div className = "col" >
+        <h4 > Filter By </h4> 
+        Type < br />
         <
         label onClick = { onTypeFilter("") }
         htmlFor = "Allt" >
@@ -57,45 +35,21 @@ export default function Sidebar({ aesc, desc, onFilter }) {
         name = "type"
         defaultChecked = "true" /
         >
-        All <
-        /label> <
+        All </label> <
         br / >
-        <
-        label onClick = { onTypeFilter("BMX") }
-        htmlFor = "BMX" >
-        <
-        input type = "radio"
-        id = "BMX"
-        name = "type" /
-        >
-        BMX <
-        /label> <
-        br / >
-        <
-        label onClick = { onTypeFilter("MTB") }
-        htmlFor = "MTB" >
-        <
-        input type = "radio"
-        id = "MTB"
-        name = "type" /
-        >
-        MTB <
-        /label> <
-        br / >
-        <
-        label onClick = { onTypeFilter("Hybrid") }
-        htmlFor = "Hybrid" >
-        <
-        input type = "radio"
-        id = "Hybrid"
-        name = "type" /
-        >
-        Hybrid <
-        /label> <
-        br / >
-        <
-        hr / >
-        Size < br / >
+        <label onClick = { onTypeFilter("veg") }
+        htmlFor = "veg" >
+        <input type = "radio"
+        id = "veg"
+        name = "type" />
+        veg </label> <br/>
+        <label onClick = { onTypeFilter("nonveg") }
+        htmlFor = "nonveg" >
+        <input type = "radio"
+        id = "nonveg"
+        name = "type" />
+        nonveg </label> <br />
+        Cuisine < br />
         <
         label onClick = { onSizeFilter("") }
         htmlFor = "All" >
@@ -109,39 +63,36 @@ export default function Sidebar({ aesc, desc, onFilter }) {
         /label> <
         br / >
         <
-        label onClick = { onSizeFilter("Small") }
-        htmlFor = "Small" >
+        label onClick = { onSizeFilter("indian") }
+        htmlFor = "indian" >
         <
         input type = "radio"
-        id = "Small"
+        id = "indian"
         name = "size" /
         >
-        Small <
+        indian <
         /label> <
         br / >
         <
-        label onClick = { onSizeFilter("Medium") }
-        htmlFor = "Medium" >
+        label onClick = { onSizeFilter("italian") }
+        htmlFor = "italian" >
         <
         input type = "radio"
-        id = "Medium"
+        id = "italian"
         name = "size" /
         >
-        Medium <
+        italian <
         /label> <
         br / >
         <
-        label onClick = { onSizeFilter("Large") }
-        htmlFor = "Large" >
+        label onClick = { onSizeFilter("japanese") }
+        htmlFor = "japanese" >
         <
         input type = "radio"
-        id = "Large"
+        id = "japanese"
         name = "size" /
         >
-        Large <
-        /label> <
-        /div> <
-        /div> <
-        /div>
+        japanese <
+        /label> </div> </div> </div>
     );
 }
