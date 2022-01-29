@@ -8,9 +8,12 @@ import Profile from "./Components/Profile";
 import ResetPassword from "./Components/ResetPassword";
 import Signup from "./Components/Signup";
 import Wishlist from "./Components/Wishlist";
+import Takeaway from "./Components/Takeaway";
+import Blog from "./Components/Blog";
 import PrivateRoute from "./Utils/PrivateRoute";
 import Products from "./Components/Products";
 import Footer from "./Components/Footer";
+
 import { AuthProvider } from "./Utils/AuthContext";
 import Product from "./Components/Product";
 import { DataProvider } from "./Utils/DataContext";
@@ -23,6 +26,8 @@ function App() {
           <Header />
           <Switch>
             <PrivateRoute path="/wishlist" component={Wishlist} />
+            <PrivateRoute path="/takeaway" component={Takeaway} />
+            <PrivateRoute path="/blog" component={Blog} />
             <PrivateRoute path="/cart" component={Cart} />
             <PrivateRoute path="/profile" component={Profile} />
             <Route path="/resetPassword" component={ResetPassword} />
