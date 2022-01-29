@@ -93,11 +93,11 @@ export function DataProvider({ children }) {
           price: products[id].buyPrice,
           quantity: 1,
           type:"Buy",
-          cost: products[id].buyPrice,
+          cost: (products[id].buyPrice)*1.05,
         };
 
         if (!tempCart["total"]) tempCart["total"] = 0;
-        tempCart["total"] = tempCart["total"] + Number(products[id].buyPrice);
+        tempCart["total"] = tempCart["total"] + Number((products[id].buyPrice)*1.05);
         if (!tempCart["quantity"]) tempCart["quantity"] = 0;
         tempCart["quantity"] = tempCart["quantity"] + 1;
       }
@@ -110,12 +110,12 @@ export function DataProvider({ children }) {
           name: products[id].name,
           price: products[id].rentPrice,
           quantity: 1,
-          type:"Rent",
-          cost: products[id].rentPrice,
+          type:"Takeaway",
+          cost: (products[id].rentPrice)*1.05,
         };
 
         if (!tempCart["total"]) tempCart["total"] = 0;
-        tempCart["total"] = tempCart["total"] + Number(products[id].rentPrice);
+        tempCart["total"] = tempCart["total"] + Number((products[id].rentPrice)*1.05);
         if (!tempCart["quantity"]) tempCart["quantity"] = 0;
         tempCart["quantity"] = tempCart["quantity"] + 1;
       }
@@ -150,21 +150,35 @@ export function DataProvider({ children }) {
  }
   const addToWishlist = (id)=>{
     let tempWishlist = { ...data["wishlist"] };
-    if(id in tempWishlist) return;
-    tempWishlist[id] = { 
-      name: products[id].name,
-      rentPrice: products[id].rentPrice,
-      buyPrice: products[id].buyPrice,
-      img: products[id].img
+    if (!tempWishlist.items) tempWishlist.items = {};
+      // Buy
+    let productId = "Buy-" + id;
+    if (productId in tempWishlist.items) return;
+    else {
+      tempWishlist.items[productId] = {
+        name: products[id].name,
+        price: 100,
+        quantity: 1,
+        type:"Book Table for 4",
+        cost: 100,
+      };
+      if (!tempWishlist["total"]) tempWishlist["total"] = 0;
+      tempWishlist["total"] = tempWishlist["total"] + Number(100);
+      if (!tempWishlist["quantity"]) tempWishlist["quantity"] = 0;
+      tempWishlist["quantity"] = tempWishlist["quantity"] + 1;
     }
     setWishlist(tempWishlist);
-  }
+  };
 
-  const removeFromWishlist = (id)=>{
+  const removeFromWishlist=(id)=>{
     let tempWishlist = { ...data["wishlist"] };
-    if(!tempWishlist[id]) return;
-    delete tempWishlist[id];
-    setWishlist(tempWishlist);
+    if (!tempWishlist.items || !tempWishlist.items[id]) return;
+
+    tempWishlist.total = Number(tempWishlist.total) - Number(tempWishlist.items[id].cost);
+    tempWishlist.quantity = Number(tempWishlist.quantity) - Number(tempWishlist.items[id].quantity);
+    
+    delete tempWishlist.items[id]
+    setCart(tempWishlist);
   }
 
   const clearWishlist = ()=>{
@@ -180,6 +194,14 @@ export function DataProvider({ children }) {
     await setOrders(tempOrders);
   }
 
+  const addToTable = async ()=>{
+    const tempTables = {...data.tables};
+    const tableId = "Table-" + (Object.keys(data.tables).length+1);
+    tempTables[tableId] = {...data.wishlist};
+    await clearWishlist();
+    await setOrders(tempTables);
+  }
+
   const value = {
     data,
     products,
@@ -191,7 +213,8 @@ export function DataProvider({ children }) {
     clearWishlist,
     addToOrders,
     displayProducts,
-    setDisplayProducts
+    setDisplayProducts,
+    addToTable
   };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }

@@ -91,6 +91,14 @@ a:hover{
   color: #fff;
 }
 
+.takeaway{
+
+}
+
+.takeaway p{
+  margin-right: 60% ;
+  text-size-adjust: 40;
+}
 button.standalone{
   display: inline-block;
   width: auto;
@@ -108,6 +116,9 @@ button.standalone{
   margin: 5rem 0;
 }
 
+.map{
+  align-items: center;
+}
 footer{
   background-color: #fff;
   color: #444;
@@ -136,7 +147,7 @@ footer{
 .col{
   margin: 1.5rem;
   flex:1;
-  min-width: 200px;
+  min-width: 100px;
 }
 
 img{
@@ -149,9 +160,10 @@ img{
 .col.product{
   min-width: 250px;
   width: 27%;
-  padding: 2rem 1rem;
+  padding: 0px 5px;
   border-radius: .5rem;
   background-color: #fff;
+  align-items: center;
   box-shadow: 0 1px 15px -2px rgba(0,0,0,0.1);
 }
 
@@ -186,13 +198,49 @@ label
   margin: 3rem auto;
   padding: 3rem 2rem;
 }
+.sidebar{
+  align-items: left;
+}
+.offer-img{
+  width:50px;
+  height:50px;
+}
+.blog{
+  background-color: beige;
 
+}
+.blog h4{
+  margin: 200;
+  margin-right: 50px;
+  margin-left: 350px;
+  justify-content: center;
+}
+.blog h1{
+  text-align: center;
+ 
+}
+.blog small{
+  margin: 200;
+  margin-right: 50px;
+  margin-left: 30px;
+ justify-content: left;
+  color: blue;
+}
+.blog img{
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: 500px;
+  justify-content: center;
+}
 .sidebar .row{
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 0px;
 }
-
-
+.tagline{
+  text-align: center;
+  margin-right: 500px;
+}
 
 table{
   width: 80%;

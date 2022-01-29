@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer>
             
-            &copy; Copyright Bikezilla. All Rights Reserved
+            &copy; Copyright Food Frenzy. All Rights Reserved
         </footer>
     )
 }

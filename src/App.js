@@ -7,7 +7,9 @@ import Login from "./Components/Login";
 import Profile from "./Components/Profile";
 import ResetPassword from "./Components/ResetPassword";
 import Signup from "./Components/Signup";
+import Blog from "./Components/Blog"
 import Wishlist from "./Components/Wishlist";
+import Takeaway from "./Components/Takeaway";
 import PrivateRoute from "./Utils/PrivateRoute";
 import Products from "./Components/Products";
 import Footer from "./Components/Footer";
@@ -23,7 +25,9 @@ function App() {
           <Header />
           <Switch>
             <PrivateRoute path="/wishlist" component={Wishlist} />
+            <PrivateRoute path="/takeaway" component={Takeaway} />
             <PrivateRoute path="/cart" component={Cart} />
+            <PrivateRoute path="/blog" component={Blog} />
             <PrivateRoute path="/profile" component={Profile} />
             <Route path="/resetPassword" component={ResetPassword} />
             <Route path="/signup" component={Signup} />

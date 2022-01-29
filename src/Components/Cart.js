@@ -59,7 +59,7 @@ export default function Cart() {
           </table>
 
           <StripeCheckout
-            name="BikeZilla"
+            name="Food Frenzy"
             stripeKey={publishableKey}
             token={onPaymentCompletion}
             shippingAddress={true}
