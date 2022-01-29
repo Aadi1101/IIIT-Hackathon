@@ -1,98 +1,70 @@
-import React, { useState } from "react";
+import React,{useState, Component} from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import {useAuth} from '../Utils/AuthContext';
+import GoogleMapReact from 'google-map-react';
 
+export default function Takeaway() {
+    const [error, setError] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [userName, setUserName] = useState("");
+    const [mobile, setMobile] = useState("");
+    
+    const {signup, addUserData} = useAuth();
+    const history = useHistory();
 
-export default function Sidebar({onFilter }) {
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        try{
+            const {user} = await signup(email, password);
+            await addUserData(user.uid, {userName,email,address,city, mobile});
+            history.push("/profile");   
+            
+        } catch(e){
+            setError(e.error);
+            console.error(e);
+        }
+    }
+    return (
+        <div className="takeaway">
+            <form autoComplete="false" onSubmit={handleSubmit}>
+            <h1>Coming Soon...</h1>
+            <h1> Book a ride</h1>
+                {(error)?("Error : "+error):("")} 
+                <label htmlFor="userName">
+                    Name : 
+                    <input value={userName} type="text" name="userName" id="userName" onChange={(e)=>setUserName(e.target.value)} />
+                </label>
 
-    const [filter, setFilter] = useState(["", ""]);
+                <label htmlFor="mobile">
+                    Mobile : 
+                    <input value={mobile} type="number" name="mobile" id="mobile" onChange={(e)=>setMobile(e.target.value)} />
+                </label>
+                <label htmlFor="email">
+                    Source : 
+                    <input value={email} type="text" name="email" id="email" onChange={(e)=>setEmail(e.target.value)} />
+                </label>
+                <label htmlFor="password">
+                    Destination : 
+                    <input value={password} type="text" name="password" id="password" onChange={(e)=>setPassword(e.target.value)} />
+                </label>
+                <label htmlFor="address">
+                    Distance : 
+                    <textarea value={address}  name="number" id="address" onChange={(e)=>setAddress(e.target.value)} />
+                </label>
+                <label htmlFor="city">
+                    Car Type : 
+                    <input value={city} type="text" name="city" id="city" onChange={(e)=>setCity(e.target.value)} />
+                </label>
+                
 
-    const onTypeFilter = (type) => () => {
-        let tempFilter = [...filter];
-        tempFilter[0] = type;
-        setFilter(tempFilter);
-        onFilter(tempFilter);
-    };
+                <input type="submit" value="Confirm" />
 
-    const onSizeFilter = (size) => () => {
-        let tempFilter = [...filter];
-    tempFilter[1] = size;
-        console.log(tempFilter);
-        setFilter(tempFilter);
-        onFilter(tempFilter);
-    };
-    return ( 
-    <div className = "product-wrapper sidebar">
-        <div className = "row">
-        <div className = "col">
-        </div> <div className = "col" >
-        <h4 > Filter By </h4> 
-        Type < br />
-        <
-        label onClick = { onTypeFilter("") }
-        htmlFor = "Allt" >
-        <
-        input type = "radio"
-        id = "Allt"
-        name = "type"
-        defaultChecked = "true" /
-        >
-        All </label> <
-        br / >
-        <label onClick = { onTypeFilter("veg") }
-        htmlFor = "veg" >
-        <input type = "radio"
-        id = "veg"
-        name = "type" />
-        veg </label> <br/>
-        <label onClick = { onTypeFilter("nonveg") }
-        htmlFor = "nonveg" >
-        <input type = "radio"
-        id = "nonveg"
-        name = "type" />
-        nonveg </label> <br />
-        Cuisine < br />
-        <
-        label onClick = { onSizeFilter("") }
-        htmlFor = "All" >
-        <
-        input defaultChecked = "true"
-        type = "radio"
-        id = "All"
-        name = "size" /
-        >
-        All <
-        /label> <
-        br / >
-        <
-        label onClick = { onSizeFilter("indian") }
-        htmlFor = "indian" >
-        <
-        input type = "radio"
-        id = "indian"
-        name = "size" /
-        >
-        indian <
-        /label> <
-        br / >
-        <
-        label onClick = { onSizeFilter("italian") }
-        htmlFor = "italian" >
-        <
-        input type = "radio"
-        id = "italian"
-        name = "size" /
-        >
-        italian <
-        /label> <
-        br / >
-        <
-        label onClick = { onSizeFilter("japanese") }
-        htmlFor = "japanese" >
-        <
-        input type = "radio"
-        id = "japanese"
-        name = "size" /
-        >
-        japanese <
-        /label> </div> </div> </div>
-    );
+                
+                Go back to menu <Link to="/products">Products</Link>
+            </form>
+        </div>
+    )
 }
