@@ -1,46 +1,60 @@
 import React from "react";
 import { useData } from "../Utils/DataContext";
-import StripeCheckout from "react-stripe-checkout";
 
 export default function Wishlist() {
-  const { data, removeFromWishlist, clearWishlist } = useData();
-  const publishableKey ="pk_test_51JdeY8SIty0bliO7n0EUmMgT3QFpuBUC40HFrd1kFZWOA5UNM7GuX5hQms97Y0W6iDUJJFnp1iy2j00u2HlR2sjz00uNrHkStz";
+  const { data, clearWishlist} = useData();
 
   const onRemove = (id) => () => {
-    removeFromWishlist(id);
+    alert("Table Booked");
+    console.log('done!')
   };
+  
+
   return (
-    <div className="container wishlist">
-      {(data.wishlist && (Object.keys(data.wishlist).length>0)) ? (
+    <div className="container cart">
+      {data.wishlist && data.wishlist.total ? (
         <>
-          <table>
-            {Object.keys(data.wishlist).map((id) => (
-              <tr>
-                  <td>
-                    {data.wishlist[id].name}
-                  </td>
-                  <td>Booked a table for 4</td>
-                  <td>Book @ ₹100</td>
-                  <td>{data.wishlist[id].quantity}</td>
-                  <td>
-                    <button onClick={onRemove(id)}>Remove</button>
-                  </td>
-                </tr>
-              
+          <h1 className="text-center"> Your Table</h1>
+          <table border-collapse="collapse">
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Cost</th>
+              <th> Actions </th>
+            </tr>
+            {Object.keys(data["wishlist"]["items"]).map((id) => (
+              <tr key={id}>
+                <td>
+                  {" "}
+                  {data["wishlist"]["items"][id].name} (
+                  {data["wishlist"]["items"][id].type}){" "}
+                </td>
+                <td> {data["wishlist"]["items"][id].quantity} </td>
+                <td> {data["wishlist"]["items"][id].price} </td>
+                <td> {data["wishlist"]["items"][id].cost} </td>
+                <td>
+                  {" "}
+                  <button onClick={onRemove(id)}>Confirm</button>{" "}
+                </td>
+              </tr>
             ))}
+
             <tr>
               <th> Total </th>
-              <th> {(data.wishlist.quantity)*100} </th>
+              <th> {data["wishlist"].quantity} </th>
               <th> - </th>
+              <th> {data["wishlist"].total} </th>
+              <th>
+                {" "}
+                <button onClick={clearWishlist}>Done</button>
+              </th>
             </tr>
           </table>
-
-          <button className="standalone red" onClick={clearWishlist}>Clear Wishlist</button>
+          <center>Book Table and Choose the Cuisine!</center>
         </>
       ) : (
-        <>
-          <h1>Your Wishlist is empty</h1>
-        </>
+        <h1>Enjoy the Meal!</h1>
       )}
     </div>
   );
